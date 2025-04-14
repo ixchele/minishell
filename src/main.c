@@ -12,8 +12,8 @@
 
 #include "minishell.h"
 
-int main(int ac __attribute__((unused)), char **av __attribute__((unused)),
-		 char **env)
+int	main(int ac __attribute__((unused)), char **av __attribute__((unused)),
+		char **env)
 {
 	(void) env;
 	ft_printf("Hello World\n");
