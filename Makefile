@@ -5,13 +5,15 @@ RED    		= \033[0;31m
 RESET  		= \033[0m
 NAME		= minishell
 CC			= cc
-CFLAGS		= -Wall -Wextra -Werror
+CFLAGS		= -Wall -Wextra -Werror -g
+FLAGS		= -lreadline 
 AR			= ar rcs
 INCLUDES	= -I./headers/ -I./libft/headers/
 LIBFT_DIR	= libft
 LIBFT		= $(addprefix $(LIBFT_DIR)/, libft.a)
-SRC_DIR		= src
-SRC			= main.c
+SRC_DIR		= src/
+SRC			= main.c \
+			  tokenizing.c 
 OBJ_DIR		= obj
 OBJ			= $(addprefix $(OBJ_DIR)/, $(SRC:.c=.o))
 
@@ -21,7 +23,7 @@ all: $(NAME)
 
 $(NAME): $(LIBFT) $(OBJ)
 	@echo "$(YELLOW)complining $(NAME)...$(RESET)"
-	@$(CC) $(OBJ) $(LIBFT) -o $(NAME)
+	@$(CC) $(OBJ) $(FLAGS) $(LIBFT) -o $(NAME)
 
 $(OBJ_DIR)/%.o: %.c
 	@mkdir -p $(OBJ_DIR)
